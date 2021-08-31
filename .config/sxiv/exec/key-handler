@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# C-x to start keyhandler
+while read -r file; do
+	case "$1" in
+	"C-c")
+		realpath "$file" | xclip -se c -r -i &&
+			notify-send 'Image path copied to clipboard'
+		;;
+	"C-m")
+		cp "$file" "$HOME/Pictures/memes" &&
+			notify-send 'File saved' ||
+			notify-send 'Unable to save file'
+		;;
+	"C-M")
+		cp "$file" "$HOME/Pictures/memes" &&
+			notify-send 'File moved and saved' ||
+			notify-send 'Unable to move file'
+		;;
+	"C-p")
+		gpaint "$file"
+		;;
+	"C-d")
+		trash-put "$file"
+		;;
+	esac
+done
