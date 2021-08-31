@@ -1,0 +1,14 @@
+-f "bestvideo[height<=?1200]+bestaudio/best"
+-o "$HOME/Videos/youtube/unsorted-downloads/%(uploader)s - %(title)s.%(ext)s"
+
+--user-agent "$USERAGENT"
+--sub-lang en,en-US,en-CA,en-GB,en-IE,en-IN,enUS
+--write-sub
+#--write-auto-sub
+--embed-subs
+--merge-output-format mkv
+--no-warnings
+--add-metadata
+#--sponskrub
+
+# vim: filetype=conf

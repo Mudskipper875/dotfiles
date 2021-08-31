@@ -1,0 +1,12 @@
+set guioptions v
+set selection-clipboard clipboard
+set adjust-open width
+set scroll-step 70
+
+map b toggle_statusbar
+map i recolor
+map + adjust_window width
+map = zoom in
+map K zoom in
+map J zoom out
+map I toggle_index
