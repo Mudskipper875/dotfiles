@@ -31,6 +31,7 @@ Plug 'axvr/org.vim'
 Plug 'mboughaba/i3config.vim'
 "Plug 'jamessan/vim-gnupg'
 "Plug 'jceb/vim-orgmode'
+Plug 'markonm/traces.vim'
 call plug#end()
 
 " vimwiki
@@ -69,7 +70,8 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 set smartindent
-set wrap linebreak
+set wrap
+set linebreak
 set nofoldenable
 set background=dark
 set ruler
@@ -77,8 +79,13 @@ set cmdheight=1
 set fileformat=unix
 set wildmenu
 set wildmode=longest,list,full
-set splitbelow splitright
+set wildignore=*.jpg,*.jpeg,*.png,*.gif,*.pdf,*.docx,*.mkv,*.mp4,*.webm,*.torrent
+set splitbelow
+set splitright
 set ttymouse=sgr
+set scrolloff=10
+set nowrapscan
+set history=1000
 
 set clipboard=unnamedplus
 vnoremap <C-c> "+y :let @+=@*<CR>
@@ -133,8 +140,11 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+" misc
 nnoremap S :%s//g<Left><Left>
 nnoremap <tab> >>
+nnoremap # I#<Esc>
+vnoremap # :norm I#<Esc>
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 " abbreviations
