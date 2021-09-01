@@ -1,0 +1,60 @@
+# General
+mod1 + { F1, shift + F1 }
+	{ pavucontrol, kitty -1 pulsemixer }
+
+mod1 + { F2, shift + F2 }
+	{ pgrep 'librewolf' || librewolf, torbrowser-launcher }
+
+mod1 + { F3, shift + F3 }
+	{ pcmanfm,kitty -1 nnn }
+
+mod1 + shift + x
+	xkill
+
+mod1 + a
+	anki --profile "$CURRENT_ANKI_PROFILE"
+
+mod1 + shift + a
+	zenity --text-info --filename="$HOME/Documents/anki-flags.txt"
+
+# Screenshots
+Print
+	maim -um 2 | tee "$SCREENSHOTS_DIR/Screeenshot-maim-$(date +"%d.%m.%Y.%H.%M.%S").png" | xclip -se c -t image/png
+
+ctrl + Print
+	maim -usDm 2 | tee "$SCREENSHOTS_DIR/Screeenshot-maim-$(date +"%d.%m.%Y.%H.%M.%S").png" | xclip -se c -t image/png
+
+ctrl + shift + Print
+	maim -Busm 2 | tee "$SCREENSHOTS_DIR/Screeenshot-maim-$(date +"%d.%m.%Y.%H.%M.%S").png" | xclip -se c -t image/png
+
+super + Print
+	 find "$SCREENSHOTS_DIR" -maxdepth 1 -mindepth 1 -type f | sort -r | sxiv -abs f -
+
+mod1 + h
+	kitty -1 htop
+
+mod1 + 1
+	notify-send 'Playing' & xclip -se c -r -o | mpv --playlist=- || notify-send "Error, can't play url"
+
+mod1 + i
+	xrandr-invert-colors
+
+mod1 + e
+	emojimenu
+
+# mpd/mpc
+mod1 + { p,9,0 }
+	mpc { toggle,prev,next }
+
+{ XF86AudioPlay, XF86AudioPrev, XF86AudioNext }
+	mpc { toggle,prev,next }
+
+mod1 + shift + p
+	mpc status | xargs -0 notify-send
+
+shift + XF86AudioPlay
+	mpc status | xargs -0 notify-send
+
+# Send text from clipboard to your phone
+mod1 + c
+	xclip -se c -r -o | qrencode -s 15 -m 2 -o - | feh -Z.x -B black -g 350x350 --class float_this -
