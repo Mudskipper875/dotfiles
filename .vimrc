@@ -144,7 +144,7 @@ inoremap <right> <nop>
 nnoremap S :%s//g<Left><Left>
 nnoremap <tab> >>
 nnoremap # I#<Esc>
-vnoremap # :norm I#<Esc>
+vnoremap # :norm 0i#<Esc>
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 " abbreviations
