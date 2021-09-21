@@ -144,6 +144,7 @@ inoremap <right> <nop>
 nnoremap S :%s//g<Left><Left>
 nnoremap <tab> >>
 nnoremap # I#<Esc>
+nnoremap Y y$
 vnoremap # :norm 0i#<Esc>
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
@@ -163,6 +164,9 @@ ab min. minimum
 ab >. ≥
 ab <. ≤
 ab sh. #!/bin/sh
+ab bash. #!/usr/bin/env bash
+ab zsh. #!/usr/bin/env zsh
+ab lua. #!/usr/bin/env lua
 ab shk. # shellcheck disable=
 ab filetype. # vim: filetype=
 ab degc °C
